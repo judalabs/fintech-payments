@@ -1,10 +1,10 @@
-package com.financial.picpay;
+package com.financial.fintechorg;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PicpayApplicationTests {
+class FintechOrgApplicationTests {
 
 	@Test
 	void contextLoads() {
