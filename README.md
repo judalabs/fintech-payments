@@ -1,11 +1,12 @@
-# Payment system for fictional Fintech company
-
-Tools used
+## Payment system for fictional Fintech company
+Fictional backend system that handles payments, considering merchants and common users across external APIs.
+use these created users if necessary:
+- 9e123648-efe5-4715-afa6-0234cbd67613 (COMMON) 
+- 5375fc00-7743-4e38-8e60-59417f0674e3 (MERCHANT)
+#### Tools 
 - Spring Boot (web, data-jpa and validation, devTools).
 - Documentation with swagger + README.md .
 - H2 memory for testing purposes. Test users already created with uuid's.
-  - 9e123648-efe5-4715-afa6-0234cbd67613 (COMMON)
-  - 5375fc00-7743-4e38-8e60-59417f0674e3 (MERCHANT)
 - Lombok for reducing boilerplate's.
 
 #### Requirements:
@@ -16,7 +17,7 @@ Tools used
 - Before finalizing the transfer, an external authorization service should be consulted. Use this mock to simulate (https://run.mocky.io/v3/8fafdd68-a090-496f-8c9a-3442cf30dae6).
 - The transfer operation should be a transaction (meaning it can be reversed in case of any inconsistencies), and the money should be returned to the wallet of the sending user.
 - Upon receiving a payment, the user or merchant needs to receive a notification (via email, SMS) sent by a third-party service. Additionally, this service might occasionally be unavailable or unstable. Use this mock to simulate the sending (http://o4d9z.mocklab.io/notify).
-- This service should be RESTful.
+- This service should be RESTFul.
  
 #### Technical considerations:
 - RESTFul (HttpMethod's, ResponseEntity, status code)
@@ -39,4 +40,7 @@ Tools used
 #### Additional considerations
 - Duplicated transaction avoidance (configurable debounce  w/ default of 2 seconds for the same pair sender+receiver)
 - Failing notifications should be handled to send another time.
+- performant transactions with db indexes
+- Limiting time when calling external API
+- If the company has many products, then balance field could be in another table to avoid user lock
 

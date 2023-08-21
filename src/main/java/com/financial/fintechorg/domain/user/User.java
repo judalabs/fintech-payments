@@ -16,6 +16,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import com.financial.fintechorg.exception.InvalidSenderException;
 import com.financial.fintechorg.exception.NoBalanceAvailableException;
+import com.financial.fintechorg.exception.SameDestinationTransactionException;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -65,6 +66,9 @@ public class User {
         User sender = this;
         if(sender.getUserType() == UserType.MERCHANT) {
             throw new InvalidSenderException(sender.getUuid());
+        }
+        if(sender.equals(receiver)) {
+            throw new SameDestinationTransactionException();
         }
 
         if(amount.compareTo(sender.getBalance()) > 0) {

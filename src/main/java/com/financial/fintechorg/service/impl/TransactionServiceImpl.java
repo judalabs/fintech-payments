@@ -1,5 +1,6 @@
 package com.financial.fintechorg.service.impl;
 
+import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -18,6 +19,7 @@ import com.financial.fintechorg.repository.TransactionRepository;
 import com.financial.fintechorg.service.AuthorizableTransaction;
 import com.financial.fintechorg.service.NotifiableTransaction;
 import com.financial.fintechorg.service.TransactionService;
+import com.financial.fintechorg.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,12 +29,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class TransactionServiceImpl implements TransactionService {
 
-    private final UserServiceImpl userServiceImpl;
+    private final UserService userServiceImpl;
     private final TransactionRepository transactionRepository;
     private final NotifiableTransaction notifiableTransaction;
     private final AuthorizableTransaction authorizableTransaction;
-
-    @Value("${app.transaction.debounce}")
+    private final Clock clock;
     private Long transactionDebounceInMillis;
 
     @Override
@@ -53,7 +54,7 @@ public class TransactionServiceImpl implements TransactionService {
                 .sender(sender)
                 .receiver(receiver)
                 .amount(transactionDto.getAmount())
-                .timestamp(LocalDateTime.now())
+                .timestamp(LocalDateTime.now(clock))
                 .build());
 
         notifyIfPossible(sender, transaction, "transaction successful");
@@ -69,11 +70,16 @@ public class TransactionServiceImpl implements TransactionService {
         try {
             notifiableTransaction.sendNotification(user, message);
         } catch (ResourceAccessException e) {
-            log.error("coudn't notify transaction to user", transaction.getId());
+            log.error("coudn't notify transaction to user. inject your custom handler here", transaction.getId());
         }
     }
 
     private LocalDateTime getDebounce() {
-        return ChronoUnit.MILLIS.addTo(LocalDateTime.now(), -transactionDebounceInMillis);
+        return ChronoUnit.MILLIS.addTo(LocalDateTime.now(clock), -transactionDebounceInMillis);
+    }
+
+    @Value("${app.transaction.debounce}")
+    public void setTransactionDebounceInMillis(Long transactionDebounceInMillis) {
+        this.transactionDebounceInMillis = transactionDebounceInMillis;
     }
 }

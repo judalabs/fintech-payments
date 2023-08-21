@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.financial.fintechorg.dto.UserDTO;
 import com.financial.fintechorg.service.UserService;
 
+import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,6 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/users")
 @AllArgsConstructor
 @Slf4j
+@Api("Handles users from UserType")
 public class UserController {
 
     private final UserService userService;
