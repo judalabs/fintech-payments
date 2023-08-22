@@ -3,6 +3,12 @@ Fictional backend system that handles payments, considering merchants and common
 use these created users if necessary:
 - 9e123648-efe5-4715-afa6-0234cbd67613 (COMMON) 
 - 5375fc00-7743-4e38-8e60-59417f0674e3 (MERCHANT)
+
+### code coverages
+![LINE](http://line.coverage.link)
+![BRANCH](http://branch.coverage.link)
+![COMPLEXITY](http://complexity.link)
+
 #### Tools 
 - Spring Boot (web, data-jpa and validation, devTools).
 - Documentation with swagger + README.md .

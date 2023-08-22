@@ -2,7 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.5.4'
 	id 'io.spring.dependency-management' version '1.1.2'
-	id "pl.droidsonroids.jacoco.testkit" version "1.0.12"
+	id 'com.github.dawnwords.jacoco.badge' version '0.2.4'
 }
 
 group = 'com.financial'
