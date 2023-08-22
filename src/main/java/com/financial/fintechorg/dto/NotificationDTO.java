@@ -1,10 +1,14 @@
 package com.financial.fintechorg.dto;
 
-import lombok.Value;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
-@Value
+@AllArgsConstructor
+@Getter
 public class NotificationDTO {
+
     String email;
-    String mensagem;
+
+    String message;
 
 }

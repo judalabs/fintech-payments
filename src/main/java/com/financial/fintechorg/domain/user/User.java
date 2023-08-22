@@ -18,18 +18,15 @@ import com.financial.fintechorg.exception.InvalidSenderException;
 import com.financial.fintechorg.exception.NoBalanceAvailableException;
 import com.financial.fintechorg.exception.SameDestinationTransactionException;
 
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Table(name = "users")
 @Entity
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "uuid")
@@ -55,7 +52,6 @@ public class User {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Setter(value= AccessLevel.NONE)
     @Column(name = "balance")
     private BigDecimal balance;
 

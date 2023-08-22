@@ -1,6 +1,7 @@
 ## Payment system for fictional Fintech company
-![LINE](https://img.shields.io/badge/line--coverage-85.71%25-brightgreen.svg)
-![COMPLEXITY](https://img.shields.io/badge/complexity-1.66-brightgreen.svg)
+![LINE](https://img.shields.io/badge/line--coverage-84.55%25-brightgreen.svg)
+![BRANCH](https://img.shields.io/badge/branch--coverage-75.00%25-yellow.svg)
+![COMPLEXITY](https://img.shields.io/badge/complexity-1.38-brightgreen.svg)
 
 Fictional backend system that handles payments, considering merchants and common users across external APIs.
 use these created users if necessary:

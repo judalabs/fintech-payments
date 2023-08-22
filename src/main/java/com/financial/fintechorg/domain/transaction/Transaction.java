@@ -21,7 +21,6 @@ import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name = "transactions", indexes = {
@@ -29,7 +28,6 @@ import lombok.Setter;
         @Index(name = "receiver_idx", columnList = "id_receiver")
 })
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
