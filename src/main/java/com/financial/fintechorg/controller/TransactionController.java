@@ -32,7 +32,7 @@ public class TransactionController {
     private final TransactionServiceImpl transactionService;
 
     @PostMapping
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseStatus(HttpStatus.CREATED)
     public void doTransaction(@Valid @RequestBody TransactionDTO request) {
         log.debug("start POST transaction");
 
