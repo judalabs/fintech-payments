@@ -1,12 +1,12 @@
 ## Payment system for fictional Fintech company
+![LINE](https://img.shields.io/badge/line--coverage-85.71%25-brightgreen.svg)
+![COMPLEXITY](https://img.shields.io/badge/complexity-1.66-brightgreen.svg)
+
 Fictional backend system that handles payments, considering merchants and common users across external APIs.
 use these created users if necessary:
 - 9e123648-efe5-4715-afa6-0234cbd67613 (COMMON) 
 - 5375fc00-7743-4e38-8e60-59417f0674e3 (MERCHANT)
 
-### code coverages
-![LINE](https://img.shields.io/badge/line--coverage-85.71%25-brightgreen.svg)
-![COMPLEXITY](https://img.shields.io/badge/complexity-1.66-brightgreen.svg)
 
 #### Tools 
 - Spring Boot (web, data-jpa and validation, devTools).
@@ -25,27 +25,28 @@ use these created users if necessary:
 - This service should be RESTFul.
  
 #### Technical considerations:
-- RESTFul (HttpMethod's, ResponseEntity, status code)
+- RESTFul (HttpMethod's, ResponseEntity, status code).
 - Clean Code (custom exceptions
-  - documentation in code and test
-  - logs indicating state and not showing sensitive information
-  - clear and meaningful names
-- SOLID (single responsibility, interfaces to external API)
-- Encapsulation (user.balance X sender.sendTo(receiver))
-- Atomicity with @Transactional
-- Anemic domain models avoidance
+  - documentation in code and test.
+  - logs indicating state and not showing sensitive information.
+  - clear and meaningful names.
+- SOLID (single responsibility, interfaces to external API).
+- Encapsulation (user.balance X sender.sendTo(receiver)).
+- Atomicity with @Transactional.
+- Anemic domain models avoidance.
 - Security
-  - UUID on sensitive info users
-  - protecting db constraints 
-  - hide data from DataIntegrityViolationException to client
-- Maintainability
-- Handling exceptions (creating transactions don't rollback when notification fails)
-- Unit and Integration tests
+  - UUID on sensitive info users.
+  - protecting db constraints.
+  - hide data from DataIntegrityViolationException to client.
+- Maintainability.
+- Handling exceptions (creating transactions don't rollback when notification fails).
+- Unit and Integration tests.
 
 #### Additional considerations
-- Duplicated transaction avoidance (configurable debounce  w/ default of 2 seconds for the same pair sender+receiver)
+- Duplicated transaction avoidance (configurable debounce  w/ default of 2 seconds for the same pair sender+receiver).
 - Failing notifications should be handled to send another time.
-- performant transactions with db indexes
-- Limiting time when calling external API
-- If the company has many products, then balance field could be in another table to avoid user lock
+- Handling targeting self transactions.
+- performant transactions with db indexes.
+- Limiting time when calling external API.
+- If the company has many products, then balance field could be in another table to avoid user lock.
 
