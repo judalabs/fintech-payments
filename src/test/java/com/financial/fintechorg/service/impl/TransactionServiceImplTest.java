@@ -19,6 +19,7 @@ import com.financial.fintechorg.domain.user.User;
 import com.financial.fintechorg.domain.user.UserType;
 import com.financial.fintechorg.dto.TransactionDTO;
 import com.financial.fintechorg.exception.DeniedAuthorizationException;
+import com.financial.fintechorg.exception.DuplicatedTransactionException;
 import com.financial.fintechorg.exception.InvalidSenderException;
 import com.financial.fintechorg.exception.NoBalanceAvailableException;
 import com.financial.fintechorg.exception.SameDestinationTransactionException;

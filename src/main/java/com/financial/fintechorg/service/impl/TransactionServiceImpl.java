@@ -15,6 +15,7 @@ import com.financial.fintechorg.domain.transaction.Transaction;
 import com.financial.fintechorg.domain.user.User;
 import com.financial.fintechorg.dto.TransactionDTO;
 import com.financial.fintechorg.exception.DeniedAuthorizationException;
+import com.financial.fintechorg.exception.DuplicatedTransactionException;
 import com.financial.fintechorg.repository.TransactionRepository;
 import com.financial.fintechorg.service.AuthorizableTransaction;
 import com.financial.fintechorg.service.NotifiableTransaction;

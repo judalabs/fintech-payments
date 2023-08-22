@@ -1,4 +1,4 @@
-package com.financial.fintechorg.service.impl;
+package com.financial.fintechorg.exception;
 
 import com.financial.fintechorg.domain.user.User;
 
