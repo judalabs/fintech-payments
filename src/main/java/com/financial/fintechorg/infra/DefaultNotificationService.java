@@ -1,4 +1,4 @@
-package com.financial.fintechorg.service.impl;
+package com.financial.fintechorg.infra;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
