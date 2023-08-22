@@ -20,6 +20,8 @@ import com.financial.fintechorg.domain.user.UserType;
 import com.financial.fintechorg.dto.TransactionDTO;
 import com.financial.fintechorg.exception.DeniedAuthorizationException;
 import com.financial.fintechorg.exception.InvalidSenderException;
+import com.financial.fintechorg.exception.NoBalanceAvailableException;
+import com.financial.fintechorg.exception.SameDestinationTransactionException;
 import com.financial.fintechorg.helper.TestClockConfiguration;
 import com.financial.fintechorg.repository.TransactionRepository;
 import com.financial.fintechorg.service.AuthorizableTransaction;
@@ -80,6 +82,29 @@ class TransactionServiceImplTest {
         when(userService.findById(defaultUuid)).thenReturn(sender);
 
         assertThrows(InvalidSenderException.class, () -> sut.createTransaction(transaction));
+    }
+
+
+    @Test
+    void shouldThrowExceptionWhenAmountAboveBalance() {
+        final var transaction = new TransactionDTO(defaultUuid, uuid2, BigDecimal.valueOf(123));
+        final var sender = User.builder().uuid(defaultUuid).userType(UserType.COMMON).balance(BigDecimal.valueOf(10)).build();
+
+        when(authorizableTransaction.authorize(sender, BigDecimal.valueOf(123))).thenReturn(true);
+        when(userService.findById(defaultUuid)).thenReturn(sender);
+
+        assertThrows(NoBalanceAvailableException.class, () -> sut.createTransaction(transaction));
+    }
+
+    @Test
+    void shouldThrowExceptionWhenSenderEqualsToReceiver() {
+        final var transaction = new TransactionDTO(defaultUuid, defaultUuid, BigDecimal.valueOf(123));
+        final var sender = User.builder().uuid(defaultUuid).userType(UserType.COMMON).balance(BigDecimal.valueOf(123)).build();
+
+        when(authorizableTransaction.authorize(sender, BigDecimal.valueOf(123))).thenReturn(true);
+        when(userService.findById(defaultUuid)).thenReturn(sender);
+
+        assertThrows(SameDestinationTransactionException.class, () -> sut.createTransaction(transaction));
     }
 
     @Test

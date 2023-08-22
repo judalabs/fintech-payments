@@ -1,9 +1,23 @@
+buildscript {
+	repositories {
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
+	}
+	dependencies {
+		classpath "com.github.dawnwords:jacoco-badge-gradle-plugin:0.2.4"
+	}
+}
+
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.5.4'
 	id 'io.spring.dependency-management' version '1.1.2'
 	id 'com.github.dawnwords.jacoco.badge' version '0.2.4'
 }
+
+apply plugin: "com.github.dawnwords.jacoco.badge"
+apply plugin: "jacoco"
 
 group = 'com.financial'
 version = '0.0.1-SNAPSHOT'
@@ -41,4 +55,20 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+	finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+	dependsOn test
+	reports {
+		xml.required = true
+		csv.required = false
+		html.required = false
+	}
+}
+jacocoBadgeGenSetting {
+	jacocoReportPath  "$buildDir/reports/jacoco/test/jacocoTestReport.xml"
+	readmePath "$projectDir/README.md"
+	// since v0.2.0, percentage limitation (0-100) for different type of coverage
+	limit = ['instruction': 0, 'branch': 0, 'line': 0, 'method': 0, 'class': 0]
 }

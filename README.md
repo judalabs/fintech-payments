@@ -5,9 +5,8 @@ use these created users if necessary:
 - 5375fc00-7743-4e38-8e60-59417f0674e3 (MERCHANT)
 
 ### code coverages
-![LINE](http://line.coverage.link)
-![BRANCH](http://branch.coverage.link)
-![COMPLEXITY](http://complexity.link)
+![LINE](https://img.shields.io/badge/line--coverage-85.71%25-brightgreen.svg)
+![COMPLEXITY](https://img.shields.io/badge/complexity-1.66-brightgreen.svg)
 
 #### Tools 
 - Spring Boot (web, data-jpa and validation, devTools).
