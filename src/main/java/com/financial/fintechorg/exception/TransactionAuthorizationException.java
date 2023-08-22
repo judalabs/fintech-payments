@@ -1,6 +1,7 @@
 package com.financial.fintechorg.exception;
 
 public class TransactionAuthorizationException extends RuntimeException {
-    public TransactionAuthorizationException(String string) {
+    public TransactionAuthorizationException(String message) {
+        super(message);
     }
 }
