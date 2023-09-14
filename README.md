@@ -3,6 +3,12 @@
 ![BRANCH](https://img.shields.io/badge/branch--coverage-75.00%25-yellow.svg)
 ![COMPLEXITY](https://img.shields.io/badge/complexity-1.38-brightgreen.svg)
 
+## How to run
+```
+docker run -d -p 8080:8080 --name finorg rodriginhu/finorg
+```
+
+## What is it 
 Fictional backend system that handles payments, considering merchants and common users across external APIs.
 use these created users if necessary:
 - 9e123648-efe5-4715-afa6-0234cbd67613 (COMMON) 
