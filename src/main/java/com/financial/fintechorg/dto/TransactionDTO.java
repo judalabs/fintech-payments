@@ -5,6 +5,8 @@ import java.util.UUID;
 
 import javax.validation.constraints.DecimalMin;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,8 +14,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TransactionDTO {
-
+public class TransactionDTO extends RepresentationModel<TransactionDTO> {
 
     private UUID sender;
 
