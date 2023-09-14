@@ -56,6 +56,3 @@ use these created users if necessary:
 - performant transactions with db indexes.
 - Limiting time when calling external API.
 - If the company has many products, then balance field could be in another table to avoid user lock.
-
-### TODO
-docker
